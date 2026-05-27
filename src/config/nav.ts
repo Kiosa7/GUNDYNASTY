@@ -21,12 +21,14 @@ export const primaryNav: NavItem[] = [
 export const footerNav = {
   Plataforma: [
     { label: "Sobre nosotros", href: "/sobre" },
-    { label: "Comunidad", href: "/comunidad" },
-    { label: "Press kit", href: "/press" },
+    {
+      label: "Comunidad",
+      href: "https://www.instagram.com/gundynasty.gg?igsh=bXpyNzk3ZnhzdG5z&utm_source=qr",
+    },
   ],
   Legal: [
     { label: "Privacidad", href: "/privacidad" },
     { label: "Términos", href: "/terminos" },
     { label: "Cookies", href: "/cookies" },
   ],
-} as const;
+} satisfies Record<string, { label: string; href: string }[]>;

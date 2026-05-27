@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Crosshair, Skull, Target, Trophy } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import { AnimatedGrid } from "@/components/effects/AnimatedGrid";
+import { useLanguage } from "@/stores/language";
+import { getT } from "@/lib/i18n";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -158,8 +160,11 @@ function Barcode() {
 }
 
 export function Standings() {
+  const { lang } = useLanguage();
+  const t = getT(lang).standings;
+
   return (
-    <section className="relative overflow-hidden py-24 bg-ff-carbon">
+    <section id="clasificacion" className="relative overflow-hidden py-24 bg-ff-carbon">
       <AnimatedGrid variant="fine" animated={false} />
       <div
         aria-hidden
@@ -182,7 +187,7 @@ export function Standings() {
             <Barcode />
             <div className="font-mono text-[0.625rem] uppercase leading-tight text-ff-cyan/60">
               <p className="font-bold text-ff-cyan/80">
-                BOOYAH! TRANSMISIÓN ENTRANTE
+                {t.hudLabel}
               </p>
               <p>24.7136° N · 46.6753° E</p>
             </div>
@@ -201,14 +206,13 @@ export function Standings() {
 
         <header className="mb-10 text-center">
           <p className="font-mono text-xs uppercase tracking-[0.4em] text-ff-cyan">
-            / @ffesportslatam · temporada 2026
+            {t.label}
           </p>
           <h2 className="mt-3 font-display text-[clamp(2.5rem,7vw,5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-grad-section">
-            Clasificación
+            {t.title}
           </h2>
           <p className="mt-4 text-sm text-ff-white/50">
-            Tabla oficial · 16 rondas disputadas ·{" "}
-            <span className="font-semibold text-ff-cyan">GUN DYNASTY #3</span>
+            {t.subtitle}
           </p>
         </header>
 
@@ -223,12 +227,12 @@ export function Standings() {
           {/* Column header */}
           <div className="hidden grid-cols-[60px_1fr_50px_80px_80px_90px_90px] items-center gap-4 border-b border-ff-cyan/10 bg-ff-graphite/60 px-6 py-3 font-heading text-[0.625rem] uppercase tracking-[0.25em] text-ff-white/35 md:grid">
             <span>Pos.</span>
-            <span>Equipo</span>
+            <span>{t.colTeam}</span>
             <span></span>
-            <span className="text-right">Rondas</span>
+            <span className="text-right">{t.colRounds}</span>
             <span className="text-right">Kills</span>
             <span className="text-right">Booyahs</span>
-            <span className="text-right">Puntos</span>
+            <span className="text-right">{t.colPoints}</span>
           </div>
 
           <ul className="divide-y divide-ff-cyan/[0.08]">
@@ -336,11 +340,11 @@ export function Standings() {
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5">
                 <span className="size-2 rounded-full bg-ff-emerald" />
-                Jugando ronda actual
+                {t.legendActive}
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="size-2 rounded-full bg-ff-steel" />
-                En descanso
+                {t.legendBreak}
               </span>
             </div>
             <div className="flex items-center gap-4">

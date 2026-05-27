@@ -14,6 +14,8 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import { AnimatedGrid } from "@/components/effects/AnimatedGrid";
+import { useLanguage } from "@/stores/language";
+import { getT } from "@/lib/i18n";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -103,9 +105,10 @@ const categoryStyle: Record<Article["category"], string> = {
 interface CardProps {
   article: Article;
   index: number;
+  t: ReturnType<typeof getT>["news"];
 }
 
-function ArticleCard({ article, index }: CardProps) {
+function ArticleCard({ article, index, t }: CardProps) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 24 }}
@@ -154,7 +157,7 @@ function ArticleCard({ article, index }: CardProps) {
             categoryStyle[article.category],
           )}
         >
-          {article.category}
+          {t.categories[article.category]}
         </span>
         {/* Hover arrow */}
         <div
@@ -205,7 +208,7 @@ function ArticleCard({ article, index }: CardProps) {
 
         <div className="mt-auto pt-5">
           <span className="inline-flex items-center gap-1.5 font-heading text-xs font-bold uppercase tracking-[0.25em] text-ff-cyan transition-all group-hover:gap-2.5">
-            Leer más
+            {t.readMore}
             <ArrowUpRight className="size-3.5" strokeWidth={2.5} />
           </span>
         </div>
@@ -215,8 +218,11 @@ function ArticleCard({ article, index }: CardProps) {
 }
 
 export function News() {
+  const { lang } = useLanguage();
+  const t = getT(lang).news;
+
   return (
-    <section className="relative overflow-hidden py-24 bg-ff-carbon">
+    <section id="noticias" className="relative overflow-hidden py-24 bg-ff-carbon">
       <AnimatedGrid variant="fine" animated={false} />
       <div
         aria-hidden
@@ -232,27 +238,30 @@ export function News() {
       <div className="relative mx-auto max-w-7xl px-6">
         <header className="mb-12 flex flex-col items-center text-center">
           <p className="font-mono text-xs uppercase tracking-[0.4em] text-ff-cyan">
-            / news · actualidad del equipo
+            {t.label}
           </p>
           <h2 className="mt-4 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-grad-section">
-            Noticias
+            {t.title}
           </h2>
           <p className="mt-5 max-w-2xl text-sm text-ff-white/55 md:text-base">
-            Cobertura editorial de todo lo que pasa con{" "}
-            <span className="font-semibold text-ff-cyan">GUNDYNASTY</span>:
-            fichajes, partidos, análisis tácticos y anuncios oficiales.
+            {t.desc}
           </p>
           <div className="mt-6 flex items-center gap-2 rounded-full border border-ff-cyan/20 bg-ff-graphite/60 px-4 py-1.5 backdrop-blur-sm">
             <span className="size-1.5 rounded-full bg-ff-emerald ff-pulse-live" />
             <span className="font-mono text-[0.625rem] uppercase tracking-[0.3em] text-ff-white/55">
-              Actualizado hoy · 6 artículos
+              {t.status}
             </span>
           </div>
         </header>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((a, i) => (
-            <ArticleCard key={a.title} article={a} index={i} />
+            <ArticleCard
+              key={a.title}
+              article={{ ...a, title: t.articles[i].title, excerpt: t.articles[i].excerpt }}
+              index={i}
+              t={t}
+            />
           ))}
         </div>
 
@@ -261,7 +270,7 @@ export function News() {
             href="#"
             className="group inline-flex items-center gap-2 rounded-sm border border-ff-cyan/30 bg-ff-graphite/60 px-6 py-3 font-heading text-xs font-bold uppercase tracking-[0.3em] text-ff-cyan backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-ff-cyan hover:text-ff-black hover:shadow-[var(--shadow-glow-cyan)]"
           >
-            Ver todas las noticias
+            {t.viewAll}
             <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>

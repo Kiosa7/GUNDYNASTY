@@ -10,7 +10,10 @@
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); gh --version 2>&1)",
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); gh auth status 2>&1)",
       "PowerShell($env:Path = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); gh auth login --web --hostname github.com 2>&1)",
-      "PowerShell(pnpm dlx vercel project --help 2>&1)"
+      "PowerShell(pnpm dlx vercel project --help 2>&1)",
+      "PowerShell(Rename-Item -Path \"C:\\\\Users\\\\ingch\\\\ff-nexus\" -NewName \"GUNDYNASTY\" -ErrorAction Stop)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\ingch\"; Rename-Item -Path \"ff-nexus\" -NewName \"GUNDYNASTY\"; Write-Host \"OK: $\\(Get-Item 'GUNDYNASTY'\\).FullName\")",
+      "Bash(pnpm dlx *)"
     ]
   }
 }

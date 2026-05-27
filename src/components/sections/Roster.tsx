@@ -5,6 +5,8 @@ import { ArrowDown, Crosshair, Swords, User } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import { AnimatedGrid } from "@/components/effects/AnimatedGrid";
+import { useLanguage } from "@/stores/language";
+import { getT } from "@/lib/i18n";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -118,7 +120,7 @@ interface PlayerCardProps {
   index: number;
 }
 
-function PlayerCard({ player, index }: PlayerCardProps) {
+function PlayerCard({ player, index, t }: PlayerCardProps & { t: ReturnType<typeof getT>["roster"] }) {
   const initial = player.nick.slice(0, 1);
   return (
     <motion.article
@@ -190,7 +192,7 @@ function PlayerCard({ player, index }: PlayerCardProps) {
           <div className="mt-3 h-px w-full bg-gradient-to-r from-ff-emerald via-ff-cyan/50 to-transparent" />
 
           <p className="mt-3 text-[0.7rem] uppercase tracking-[0.18em] text-ff-white/40">
-            Mapas jugados:{" "}
+            {t.maps}:{" "}
             <span className="font-display text-sm font-bold text-ff-white/80">
               {player.maps}
             </span>
@@ -200,21 +202,20 @@ function PlayerCard({ player, index }: PlayerCardProps) {
 
       {/* Stats footer */}
       <footer className="grid grid-cols-3 gap-3 border-t border-ff-cyan/10 bg-ff-graphite/40 px-5 py-4">
-        <Stat icon={ArrowDown} label="Bajas" value={fmt.format(player.kills)} />
-        <Stat
-          icon={Crosshair}
-          label="Headshots"
-          value={fmt.format(player.headshots)}
-        />
-        <Stat icon={Swords} label="Daño" value={fmt.format(player.damage)} />
+        <Stat icon={ArrowDown} label={t.statKills} value={fmt.format(player.kills)} />
+        <Stat icon={Crosshair} label={t.statHeadshots} value={fmt.format(player.headshots)} />
+        <Stat icon={Swords} label={t.statDamage} value={fmt.format(player.damage)} />
       </footer>
     </motion.article>
   );
 }
 
 export function Roster() {
+  const { lang } = useLanguage();
+  const t = getT(lang).roster;
+
   return (
-    <section className="relative overflow-hidden py-24 bg-ff-graphite">
+    <section id="roster" className="relative overflow-hidden py-24 bg-ff-graphite">
       <AnimatedGrid variant="default" animated={false} />
       <div
         aria-hidden
@@ -234,29 +235,26 @@ export function Roster() {
       <div className="relative mx-auto max-w-7xl px-6">
         <header className="mb-12 flex flex-col items-center text-center">
           <p className="font-mono text-xs uppercase tracking-[0.4em] text-ff-cyan">
-            / squad · roster oficial
+            {t.label}
           </p>
           <h2 className="mt-4 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-grad-section">
-            Plantilla
+            {t.title}
           </h2>
           <p className="mt-5 max-w-2xl text-sm text-ff-white/55 md:text-base">
-            El escuadrón profesional de{" "}
-            <span className="font-semibold text-ff-cyan">GUNDYNASTY</span>{" "}
-            compitiendo en @ffesportslatam. Seis jugadores · cuatro naciones ·
-            una sola dinastía.
+            {t.desc}
           </p>
 
           <div className="mt-6 flex items-center gap-2 rounded-full border border-ff-cyan/20 bg-ff-graphite/60 px-4 py-1.5 backdrop-blur-sm">
             <span className="size-1.5 rounded-full bg-ff-emerald ff-pulse-live" />
             <span className="font-mono text-[0.625rem] uppercase tracking-[0.3em] text-ff-white/60">
-              Roster activo · Temporada 2026
+              {t.status}
             </span>
           </div>
         </header>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {roster.map((p, i) => (
-            <PlayerCard key={p.nick} player={p} index={i} />
+            <PlayerCard key={p.nick} player={p} index={i} t={t} />
           ))}
         </div>
       </div>

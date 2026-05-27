@@ -39,6 +39,7 @@
   html {
     color-scheme: dark;
     background-color: var(--ff-black);
+    scroll-behavior: smooth;
   }
 
   body {
@@ -159,6 +160,53 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  .prose-legal h2 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ff-cyan);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 229, 199, 0.12);
+  }
+  .prose-legal p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+  .prose-legal ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+  .prose-legal ul li {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+  .prose-legal ul li::before {
+    content: "⬥";
+    position: absolute;
+    left: 0;
+    color: var(--ff-cyan);
+    opacity: 0.5;
+    font-size: 0.6rem;
+    top: 0.45rem;
+  }
+  .prose-legal a {
+    color: var(--ff-cyan);
+    text-decoration: none;
+  }
+  .prose-legal a:hover {
+    text-decoration: underline;
   }
 
   .neon-border {

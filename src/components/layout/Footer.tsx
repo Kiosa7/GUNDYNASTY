@@ -1,18 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import { footerNav } from "@/config/nav";
 import { siteConfig } from "@/config/site";
 import { LogoGD } from "@/components/icons/LogoGD";
-
-const socialLinks = [
-  { label: "Twitter", href: siteConfig.links.twitter, short: "TW" },
-  { label: "Discord", href: siteConfig.links.discord, short: "DC" },
-  { label: "YouTube", href: siteConfig.links.youtube, short: "YT" },
-  { label: "Twitch", href: siteConfig.links.twitch, short: "TV" },
-  { label: "Instagram", href: siteConfig.links.instagram, short: "IG" },
-  { label: "TikTok", href: siteConfig.links.tiktok, short: "TK" },
-];
+import { useLanguage } from "@/stores/language";
+import { getT } from "@/lib/i18n";
 
 export function Footer() {
+  const { lang } = useLanguage();
+  const t = getT(lang).footer;
+
   return (
     <footer className="relative overflow-hidden border-t border-ff-cyan/15 bg-ff-graphite/50">
       {/* Animated top border */}
@@ -45,26 +43,9 @@ export function Footer() {
             </p>
 
             <p className="mt-4 max-w-md text-sm text-ff-white/50">
-              {siteConfig.tagline}. Compitiendo al más alto nivel en Free Fire
-              E-sports y construyendo una de las comunidades gamer más activas
-              de Latinoamérica.
+              {t.desc}
             </p>
 
-            {/* Social links */}
-            <div className="mt-6 flex flex-wrap gap-2">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="grid size-9 place-items-center rounded-sm border border-ff-cyan/15 font-mono text-[0.625rem] font-bold tracking-wider text-ff-white/45 transition-all hover:border-ff-cyan/40 hover:text-ff-cyan hover:shadow-[var(--shadow-glow-cyan-sm)]"
-                >
-                  {s.short}
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Nav columns */}
@@ -76,12 +57,23 @@ export function Footer() {
               <ul className="mt-4 space-y-2.5">
                 {items.map((item) => (
                   <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="text-sm text-ff-white/55 transition-colors hover:text-ff-cyan"
-                    >
-                      {item.label}
-                    </Link>
+                    {item.href.startsWith("http") ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-ff-white/55 transition-colors hover:text-ff-cyan"
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="text-sm text-ff-white/55 transition-colors hover:text-ff-cyan"
+                      >
+                        {item.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -93,7 +85,7 @@ export function Footer() {
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-ff-cyan/10 pt-6 sm:flex-row">
           <p className="text-center text-xs text-ff-white/25">
             © {new Date().getFullYear()} {siteConfig.creators.company} ·
-            E-sports Organization
+            {t.copyright}
           </p>
           <p className="text-center font-mono text-[0.6rem] uppercase tracking-[0.2em] text-ff-white/20">
             {siteConfig.creators.disclaimer}
