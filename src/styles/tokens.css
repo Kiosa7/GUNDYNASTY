@@ -1,0 +1,122 @@
+@layer base {
+  :root {
+    /* Brand — Teal / Emerald / Deep Blue */
+    --ff-emerald: #006d55;
+    --ff-teal: #004e4f;
+    --ff-deep: #003049;
+
+    /* Derived neon accents for HUD / glow */
+    --ff-cyan: #00e5c7;
+    --ff-mint: #5eead4;
+    --ff-signal: #00fff0;
+
+    /* Surface scale (tinted toward deep blue) */
+    --ff-black: #00060d;
+    --ff-graphite: #00131f;
+    --ff-carbon: #001a2a;
+    --ff-steel: #002438;
+    --ff-fog: #00405c;
+
+    /* Foreground */
+    --ff-white: #ffffff;
+    --ff-mute: rgba(255, 255, 255, 0.62);
+
+    /* Glow RGB triples (for rgba composition) */
+    --ff-glow-primary: 0 229 199;     /* cyan */
+    --ff-glow-secondary: 94 234 212;  /* mint */
+    --ff-glow-emerald: 0 109 85;
+    --ff-glow-signal: 0 255 240;
+
+    /* Glass surfaces */
+    --ff-glass-bg: rgba(0, 30, 49, 0.55);
+    --ff-glass-border: rgba(0, 229, 199, 0.12);
+    --ff-glass-highlight: rgba(94, 234, 212, 0.05);
+
+    /* Gradients */
+    --grad-teal: linear-gradient(
+      135deg,
+      #003049 0%,
+      #004e4f 50%,
+      #006d55 100%
+    );
+    --grad-neon: linear-gradient(
+      135deg,
+      #00e5c7 0%,
+      #5eead4 50%,
+      #00fff0 100%
+    );
+    --grad-night: linear-gradient(180deg, #00060d 0%, #00131f 60%, #003049 100%);
+    --grad-holo: conic-gradient(
+      from 180deg at 50% 50%,
+      #003049,
+      #004e4f,
+      #006d55,
+      #00e5c7,
+      #5eead4,
+      #00e5c7,
+      #006d55,
+      #003049
+    );
+    --grad-mesh:
+      radial-gradient(
+        ellipse 80% 60% at 20% 0%,
+        rgba(0, 229, 199, 0.15),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 80% at 80% 100%,
+        rgba(0, 109, 85, 0.25),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 40% 40% at 50% 50%,
+        rgba(0, 78, 79, 0.4),
+        transparent 70%
+      );
+
+    /* Shadows / Glows */
+    --shadow-glow-cyan:
+      0 0 24px rgba(var(--ff-glow-primary) / 0.55),
+      0 0 48px rgba(var(--ff-glow-primary) / 0.35);
+    --shadow-glow-mint:
+      0 0 24px rgba(var(--ff-glow-secondary) / 0.55),
+      0 0 48px rgba(var(--ff-glow-secondary) / 0.35);
+    --shadow-glow-emerald:
+      0 0 24px rgba(var(--ff-glow-emerald) / 0.65),
+      0 0 48px rgba(var(--ff-glow-emerald) / 0.4);
+    --shadow-glow-signal:
+      0 0 20px rgba(var(--ff-glow-signal) / 0.85),
+      0 0 60px rgba(var(--ff-glow-signal) / 0.45);
+
+    /* Card glass surfaces */
+    --ff-glass-card: rgba(0, 15, 32, 0.68);
+    --ff-glass-card-border: rgba(0, 229, 199, 0.08);
+    --ff-glass-card-hover: rgba(0, 26, 50, 0.82);
+
+    /* Glow shadows — card scale */
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-card-hover:
+      0 20px 60px rgba(0, 0, 0, 0.65),
+      0 0 32px rgba(0, 229, 199, 0.12);
+    --shadow-glow-cyan-sm: 0 0 12px rgba(var(--ff-glow-primary) / 0.45);
+    --shadow-glow-row:
+      0 0 0 1px rgba(0, 229, 199, 0.18) inset,
+      0 0 24px rgba(0, 229, 199, 0.06) inset;
+
+    /* Section accent gradient — top-of-section radial glow */
+    --section-top-glow: radial-gradient(
+      ellipse 80% 40% at 50% 0%,
+      rgba(0, 229, 199, 0.055),
+      transparent 65%
+    );
+
+    /* Easing & duration */
+    --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+
+    --dur-micro: 150ms;
+    --dur-ui: 300ms;
+    --dur-section: 600ms;
+    --dur-hero: 1200ms;
+  }
+}

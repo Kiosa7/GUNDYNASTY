@@ -1,0 +1,140 @@
+@layer utilities {
+  @keyframes ff-pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 12px rgba(var(--ff-glow-primary) / 0.45);
+    }
+    50% {
+      box-shadow: 0 0 32px rgba(var(--ff-glow-primary) / 0.9);
+    }
+  }
+
+  @keyframes ff-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes ff-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes ff-float-slow {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    33% { transform: translateY(-6px) translateX(4px); }
+    66% { transform: translateY(4px) translateX(-3px); }
+  }
+
+  @keyframes ff-scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+
+  @keyframes ff-holo-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes ff-fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes ff-border-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes ff-grid-pan {
+    0% { background-position: 0 0; }
+    100% { background-position: 56px 56px; }
+  }
+
+  @keyframes ff-particle-rise {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-120vh) scale(0.4); opacity: 0; }
+  }
+
+  @keyframes ff-glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+  }
+
+  @keyframes ff-ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes ff-neon-pulse-border {
+    0%, 100% { box-shadow: 0 0 0 1px rgba(0, 229, 199, 0.18) inset; }
+    50% { box-shadow: 0 0 0 1px rgba(0, 229, 199, 0.42) inset, 0 0 20px rgba(0, 229, 199, 0.08) inset; }
+  }
+
+  @keyframes ff-count-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .ff-shimmer {
+    background: linear-gradient(
+      110deg,
+      transparent 30%,
+      rgba(0, 229, 199, 0.22) 50%,
+      transparent 70%
+    );
+    background-size: 200% 100%;
+    animation: ff-shimmer 2.6s var(--ease-out-expo) infinite;
+  }
+
+  .ff-pulse-live {
+    animation: ff-pulse-glow 1.6s ease-in-out infinite;
+  }
+
+  .ff-float {
+    animation: ff-float 3.2s ease-in-out infinite;
+  }
+
+  .ff-float-slow {
+    animation: ff-float-slow 6s ease-in-out infinite;
+  }
+
+  .ff-grid-pan {
+    animation: ff-grid-pan 12s linear infinite;
+  }
+
+  .ff-ticker {
+    animation: ff-ticker 32s linear infinite;
+  }
+
+  .ff-neon-pulse-border {
+    animation: ff-neon-pulse-border 2.8s ease-in-out infinite;
+  }
+
+  .ff-border-flow {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 229, 199, 0.65),
+      rgba(94, 234, 212, 0.8),
+      rgba(0, 229, 199, 0.65),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: ff-border-flow 3s linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
