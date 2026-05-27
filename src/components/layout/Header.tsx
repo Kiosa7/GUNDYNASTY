@@ -2,6 +2,7 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { LogoGD } from "@/components/icons/LogoGD";
 import { LanguageToggle } from "@/components/layout/LanguageToggle";
+import { MobileNav } from "@/components/layout/MobileNav";
 
 const INSTAGRAM_URL =
   "https://www.instagram.com/gundynasty.gg?igsh=bXpyNzk3ZnhzdG5z&utm_source=qr";
@@ -67,7 +68,8 @@ export function Header() {
           </span>
         </Link>
 
-        <div className="flex items-center gap-3">
+        {/* Desktop: language + social links */}
+        <div className="hidden lg:flex items-center gap-3">
           <LanguageToggle />
           <a
             href={INSTAGRAM_URL}
@@ -77,7 +79,7 @@ export function Header() {
             className="group flex items-center gap-2 rounded-sm border border-ff-cyan/20 px-3 py-2 font-heading text-xs uppercase tracking-widest text-ff-white/60 transition-all hover:border-ff-cyan/50 hover:text-ff-cyan hover:shadow-[var(--shadow-glow-cyan-sm)]"
           >
             <InstagramIcon className="size-4 transition-transform duration-300 group-hover:scale-110" />
-            <span className="hidden sm:inline">@gundynasty.gg</span>
+            <span>@gundynasty.gg</span>
           </a>
           <a
             href={YOUTUBE_URL}
@@ -87,9 +89,12 @@ export function Header() {
             className="group flex items-center gap-2 rounded-sm border border-ff-cyan/20 px-3 py-2 font-heading text-xs uppercase tracking-widest text-ff-white/60 transition-all hover:border-ff-cyan/50 hover:text-ff-cyan hover:shadow-[var(--shadow-glow-cyan-sm)]"
           >
             <YoutubeIcon className="size-4 transition-transform duration-300 group-hover:scale-110" />
-            <span className="hidden sm:inline">YouTube</span>
+            <span>YouTube</span>
           </a>
         </div>
+
+        {/* Mobile: hamburger only */}
+        <MobileNav />
       </div>
     </header>
   );

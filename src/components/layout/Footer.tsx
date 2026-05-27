@@ -91,6 +91,21 @@ export function Footer() {
             {siteConfig.creators.disclaimer}
           </p>
         </div>
+
+        {/* Creator signature */}
+        <div className="mt-6 text-center">
+          <p className="text-xs text-ff-white/40">
+            Hecho con <span className="text-ff-orange">♦</span> por{" "}
+            <a
+              href="https://www.facebook.com/PcElectronics7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-heading font-semibold text-ff-cyan transition-colors hover:text-ff-yellow"
+            >
+              PC Electronics
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );

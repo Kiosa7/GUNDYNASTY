@@ -28,13 +28,21 @@ export function HeroCinematic() {
       <Particles count={36} />
       <Scanlines />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 px-6 py-16 lg:grid-cols-12 lg:items-center lg:gap-8">
-        {/* Text column */}
+      {/* Mobile watermark logo — decorative only, behind content */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-[-10%] top-1/2 -translate-y-1/2 opacity-[0.055] lg:hidden"
+      >
+        <LogoGD className="w-[320px]" />
+      </div>
+
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 px-6 py-10 lg:grid-cols-12 lg:items-center lg:gap-8 lg:py-16">
+        {/* Text column — full width on mobile, half on desktop */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease }}
-          className="order-2 lg:order-1 lg:col-span-6"
+          className="lg:col-span-6"
         >
           <div className="flex flex-wrap items-center gap-3">
             <Badge variant="live">
@@ -49,7 +57,7 @@ export function HeroCinematic() {
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 0.1 }}
-            className="mt-6 font-display text-[clamp(2.75rem,7vw,6rem)] font-extrabold uppercase leading-[0.95] tracking-tight"
+            className="mt-4 font-display text-[clamp(2rem,7vw,6rem)] font-extrabold uppercase leading-[0.95] tracking-tight"
           >
             <span className="block">{t.line1}</span>
             <span className="block text-grad-neon">{t.line2}</span>
@@ -60,7 +68,7 @@ export function HeroCinematic() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.3 }}
-            className="mt-6 max-w-xl text-base text-ff-white/70 md:text-lg"
+            className="mt-4 max-w-xl text-sm text-ff-white/65 md:text-lg"
           >
             {t.desc}
           </motion.p>
@@ -69,7 +77,7 @@ export function HeroCinematic() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.45 }}
-            className="mt-10 flex flex-col gap-4 sm:flex-row"
+            className="mt-6 flex flex-col gap-3 sm:flex-row"
           >
             <a href="#roster">
               <Button variant="primary" size="lg">
@@ -92,7 +100,7 @@ export function HeroCinematic() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, ease, delay: 0.7 }}
-            className="mt-14 grid max-w-lg grid-cols-3 gap-6 border-t border-ff-cyan/10 pt-6"
+            className="mt-8 grid max-w-lg grid-cols-3 gap-6 border-t border-ff-cyan/10 pt-6"
           >
             {(
               [
@@ -113,12 +121,12 @@ export function HeroCinematic() {
           </motion.dl>
         </motion.div>
 
-        {/* Logo column */}
+        {/* Logo column — desktop only */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, ease, delay: 0.2 }}
-          className="relative order-1 mx-auto w-full max-w-[34rem] lg:order-2 lg:col-span-6"
+          className="relative hidden lg:block lg:col-span-6"
         >
           <div className="relative mx-auto aspect-square w-full">
             <motion.div

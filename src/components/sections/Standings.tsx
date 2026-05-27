@@ -164,7 +164,7 @@ export function Standings() {
   const t = getT(lang).standings;
 
   return (
-    <section id="clasificacion" className="relative overflow-hidden py-24 bg-ff-carbon">
+    <section id="clasificacion" className="relative overflow-hidden py-14 md:py-24 bg-ff-carbon">
       <AnimatedGrid variant="fine" animated={false} />
       <div
         aria-hidden
@@ -180,7 +180,7 @@ export function Standings() {
         FF·ESPORTS
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6">
+      <div className="relative mx-auto max-w-7xl px-3 sm:px-6">
         {/* HUD strip */}
         <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-y border-ff-cyan/15 py-4">
           <div className="flex items-center gap-4">
@@ -204,11 +204,11 @@ export function Standings() {
           </div>
         </div>
 
-        <header className="mb-10 text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.4em] text-ff-cyan">
+        <header className="mb-8 md:mb-10 text-center">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] md:tracking-[0.4em] text-ff-cyan">
             {t.label}
           </p>
-          <h2 className="mt-3 font-display text-[clamp(2.5rem,7vw,5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-grad-section">
+          <h2 className="mt-3 font-display text-[clamp(1.75rem,7vw,5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-grad-section">
             {t.title}
           </h2>
           <p className="mt-4 text-sm text-ff-white/50">
@@ -244,7 +244,7 @@ export function Standings() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, ease, delay: i * 0.04 }}
                 className={cn(
-                  "group relative grid grid-cols-[40px_1fr_24px_70px] items-center gap-3 px-5 py-4 transition-all duration-300 hover:bg-ff-steel/30 md:grid-cols-[60px_1fr_50px_80px_80px_90px_90px] md:gap-4 md:px-6 md:py-5",
+                  "group relative grid grid-cols-[36px_1fr_20px_74px] items-center gap-2 px-4 py-4 transition-all duration-300 hover:bg-ff-steel/30 md:grid-cols-[60px_1fr_50px_80px_80px_90px_90px] md:gap-4 md:px-6 md:py-5",
                   t.highlight && "neon-row-highlight",
                 )}
               >
@@ -325,7 +325,7 @@ export function Standings() {
                 {/* PUNTOS */}
                 <span
                   className={cn(
-                    "text-right font-display text-base font-extrabold md:text-lg",
+                    "whitespace-nowrap text-right font-display text-base font-extrabold md:text-lg",
                     t.highlight ? "text-ff-cyan" : "text-ff-white/80",
                   )}
                 >

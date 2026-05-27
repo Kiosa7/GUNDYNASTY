@@ -175,7 +175,7 @@ function PlayerCard({ player, index, t }: PlayerCardProps & { t: ReturnType<type
             {player.flag}
           </span>
 
-          <h3 className="pr-8 font-display text-xl font-extrabold uppercase tracking-tight text-ff-cyan">
+          <h3 className="pr-8 font-display text-base md:text-xl font-extrabold uppercase tracking-tight text-ff-cyan truncate">
             {player.nick}
           </h3>
           <p className="mt-1 line-clamp-2 font-heading text-[0.75rem] font-medium uppercase tracking-wide text-ff-white/50">
@@ -215,7 +215,7 @@ export function Roster() {
   const t = getT(lang).roster;
 
   return (
-    <section id="roster" className="relative overflow-hidden py-24 bg-ff-graphite">
+    <section id="roster" className="relative overflow-hidden py-14 md:py-24 bg-ff-graphite">
       <AnimatedGrid variant="default" animated={false} />
       <div
         aria-hidden
@@ -233,11 +233,11 @@ export function Roster() {
       />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <header className="mb-12 flex flex-col items-center text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.4em] text-ff-cyan">
+        <header className="mb-8 md:mb-12 flex flex-col items-center text-center">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] md:tracking-[0.4em] text-ff-cyan">
             {t.label}
           </p>
-          <h2 className="mt-4 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-grad-section">
+          <h2 className="mt-4 font-display text-[clamp(1.75rem,6vw,4.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-grad-section">
             {t.title}
           </h2>
           <p className="mt-5 max-w-2xl text-sm text-ff-white/55 md:text-base">
